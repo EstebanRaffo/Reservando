@@ -3,9 +3,9 @@ var Aplicacion = function(listado) {
         this.dibujarListado(listado.restaurantes)
         this.dibujarFiltros();
         this.registrarEventos();
-
     }
-    //Esta función le asigna al botón "Buscar" la función filtrarRestaurantes()
+
+//Esta función le asigna al botón "Buscar" la función filtrarRestaurantes()
 Aplicacion.prototype.registrarEventos = function() {
     $(".buscar").click(this.filtrarRestaurantes.bind(this));
 }

@@ -1,5 +1,6 @@
 var expect = chai.expect;
 
+// Guia 1
 // Paso 2: Testeá la función reservarHorario(horario)
 describe('Test de reserva de horarios', function(){
     it('Cuando se reserva un horario, el mismo es eliminado del arreglo de horarios', function(){
@@ -104,25 +105,115 @@ describe('Test de obtener restaurantes', function(){
             new Restaurant(10, "La Trottinette", "Desayuno", "París", ["13:00", "15:30", "18:00"], "../img/pasta5.jpg", [8, 8, 7, 7, 7, 7])    
         ];
         var listado = new Listado(listadoDeRestaurantes);
-        console.log(listado.obtenerRestaurantes());
-        var filtrados = listado.obtenerRestaurantes('', "Londres", "15:30");
-        console.log(filtrados.restaurantes)
         
-        expect(filtrados.restaurantes).to.equal(2);
+        var filtrados = listado.obtenerRestaurantes(null, "Londres", "15:30");
+        console.log(filtrados)
+        
+        expect(filtrados.length).to.equal(2);
     })
+
     it('Solo Filtro Rubro informado', function(){
-
-    })
-    it('Filtro Ciudad no informado', function(){
-
-    })
-    it('Filtro Ciudad informado', function(){
+        var listadoDeRestaurantes = [
+            new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
+            new Restaurant(2, "TAO", "Pizza", "Nueva York", ["14:00", "16:30", "19:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
+            new Restaurant(3, "Mandarín Kitchen", "Asiática", "Londres", ["13:00", "15:30", "18:00"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7]),
+            new Restaurant(4, "Mandarín", "Pizza", "Londres", ["16:00", "15:30", "13:30"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7]),
+            new Restaurant(5, "Burgermeister", "Hamburguesa", "Berlín", ["13:00", "15:30", "18:00"], "../img/hamburguesa4.jpg", [5, 8, 4, 9, 9]),
+            new Restaurant(6, "Jolly", "Pasta", "Berlín", ["12:00", "13:30", "16:00"], "../img/asiatica3.jpg", [8, 3, 9, 5, 6, 7]),
+            new Restaurant(7, "Osteria Da Fortunata", "Pasta", "Roma", ["13:00", "15:30", "18:00"], "../img/pasta2.jpg", [7, 7, 7, 7, 3, 9]),
+            new Restaurant(8, "Osteria", "Ensalada", "Roma", ["13:30", "16:30", "19:00"], "../img/pasta2.jpg", [7, 7, 7, 7, 3, 9]),
+            new Restaurant(9, "Cafe Francoeur", "Desayuno", "París", ["14:30", "15:30", "19:00"], "../img/desayuno1.jpg", [4, 7, 9, 8, 10]),
+            new Restaurant(10, "La Trottinette", "Desayuno", "París", ["13:00", "15:30", "18:00"], "../img/pasta5.jpg", [8, 8, 7, 7, 7, 7])    
+        ];
+        var listado = new Listado(listadoDeRestaurantes);
         
-    })
-    it('Filtro Horario no informado', function(){
-
-    })
-    it('Filtro Horario informado', function(){
+        var filtrados = listado.obtenerRestaurantes("Asiática", null, null);
+        console.log(filtrados)
         
+        expect(filtrados.length).to.equal(2);
+    })
+
+    it('Solo Filtro Ciudad no informado', function(){
+        var listadoDeRestaurantes = [
+            new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
+            new Restaurant(2, "TAO", "Pizza", "Nueva York", ["14:00", "16:30", "19:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
+            new Restaurant(3, "Mandarín Kitchen", "Asiática", "Londres", ["13:00", "15:30", "18:00"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7]),
+            new Restaurant(4, "Mandarín", "Pizza", "Londres", ["16:00", "15:30", "13:30"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7]),
+            new Restaurant(5, "Burgermeister", "Hamburguesa", "Berlín", ["13:00", "15:30", "18:00"], "../img/hamburguesa4.jpg", [5, 8, 4, 9, 9]),
+            new Restaurant(6, "Jolly", "Pasta", "Berlín", ["12:00", "13:30", "16:00"], "../img/asiatica3.jpg", [8, 3, 9, 5, 6, 7]),
+            new Restaurant(7, "Osteria Da Fortunata", "Pasta", "Roma", ["13:00", "15:30", "18:00"], "../img/pasta2.jpg", [7, 7, 7, 7, 3, 9]),
+            new Restaurant(8, "Osteria", "Ensalada", "Roma", ["13:30", "16:30", "19:00"], "../img/pasta2.jpg", [7, 7, 7, 7, 3, 9]),
+            new Restaurant(9, "Cafe Francoeur", "Desayuno", "París", ["14:30", "15:30", "19:00"], "../img/desayuno1.jpg", [4, 7, 9, 8, 10]),
+            new Restaurant(10, "La Trottinette", "Desayuno", "París", ["13:00", "15:30", "18:00"], "../img/pasta5.jpg", [8, 8, 7, 7, 7, 7])    
+        ];
+        var listado = new Listado(listadoDeRestaurantes);
+        
+        var filtrados = listado.obtenerRestaurantes("Pizza", null, "15:30");
+        console.log(filtrados)
+        
+        expect(filtrados.length).to.equal(1);
+    })
+
+    it('Solo Filtro Ciudad informado', function(){
+        var listadoDeRestaurantes = [
+            new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
+            new Restaurant(2, "TAO", "Pizza", "Nueva York", ["14:00", "16:30", "19:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
+            new Restaurant(3, "Mandarín Kitchen", "Asiática", "Londres", ["13:00", "15:30", "18:00"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7]),
+            new Restaurant(4, "Mandarín", "Pizza", "Londres", ["16:00", "15:30", "13:30"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7]),
+            new Restaurant(5, "Burgermeister", "Hamburguesa", "Berlín", ["13:00", "15:30", "18:00"], "../img/hamburguesa4.jpg", [5, 8, 4, 9, 9]),
+            new Restaurant(6, "Jolly", "Pasta", "Berlín", ["12:00", "13:30", "16:00"], "../img/asiatica3.jpg", [8, 3, 9, 5, 6, 7]),
+            new Restaurant(7, "Osteria Da Fortunata", "Pasta", "Roma", ["13:00", "15:30", "18:00"], "../img/pasta2.jpg", [7, 7, 7, 7, 3, 9]),
+            new Restaurant(8, "Osteria", "Ensalada", "Roma", ["13:30", "16:30", "19:00"], "../img/pasta2.jpg", [7, 7, 7, 7, 3, 9]),
+            new Restaurant(9, "Cafe Francoeur", "Desayuno", "París", ["14:30", "15:30", "19:00"], "../img/desayuno1.jpg", [4, 7, 9, 8, 10]),
+            new Restaurant(10, "La Trottinette", "Desayuno", "París", ["13:00", "15:30", "18:00"], "../img/pasta5.jpg", [8, 8, 7, 7, 7, 7])    
+        ];
+        var listado = new Listado(listadoDeRestaurantes);
+        
+        var filtrados = listado.obtenerRestaurantes(null, 'Berlín', null);
+        console.log(filtrados)
+        
+        expect(filtrados.length).to.equal(2);
+    })
+
+    it('Solo Filtro Horario no informado', function(){
+        var listadoDeRestaurantes = [
+            new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
+            new Restaurant(2, "TAO", "Pizza", "Nueva York", ["14:00", "16:30", "19:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
+            new Restaurant(3, "Mandarín Kitchen", "Asiática", "Londres", ["13:00", "15:30", "18:00"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7]),
+            new Restaurant(4, "Mandarín", "Pizza", "Londres", ["16:00", "15:30", "13:30"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7]),
+            new Restaurant(5, "Burgermeister", "Hamburguesa", "Berlín", ["13:00", "15:30", "18:00"], "../img/hamburguesa4.jpg", [5, 8, 4, 9, 9]),
+            new Restaurant(6, "Jolly", "Pasta", "Berlín", ["12:00", "13:30", "16:00"], "../img/asiatica3.jpg", [8, 3, 9, 5, 6, 7]),
+            new Restaurant(7, "Osteria Da Fortunata", "Pasta", "Roma", ["13:00", "15:30", "18:00"], "../img/pasta2.jpg", [7, 7, 7, 7, 3, 9]),
+            new Restaurant(8, "Osteria", "Ensalada", "Roma", ["13:30", "16:30", "19:00"], "../img/pasta2.jpg", [7, 7, 7, 7, 3, 9]),
+            new Restaurant(9, "Cafe Francoeur", "Desayuno", "París", ["14:30", "15:30", "19:00"], "../img/desayuno1.jpg", [4, 7, 9, 8, 10]),
+            new Restaurant(10, "La Trottinette", "Desayuno", "París", ["13:00", "15:30", "18:00"], "../img/pasta5.jpg", [8, 8, 7, 7, 7, 7])    
+        ];
+        var listado = new Listado(listadoDeRestaurantes);
+        
+        var filtrados = listado.obtenerRestaurantes('Pasta', 'Berlín', null);
+        console.log(filtrados)
+        
+        expect(filtrados.length).to.equal(1);
+    })
+
+    it('Solo Filtro Horario informado', function(){
+        var listadoDeRestaurantes = [
+            new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
+            new Restaurant(2, "TAO", "Pizza", "Nueva York", ["14:00", "16:30", "19:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
+            new Restaurant(3, "Mandarín Kitchen", "Asiática", "Londres", ["13:00", "15:30", "18:00"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7]),
+            new Restaurant(4, "Mandarín", "Pizza", "Londres", ["16:00", "15:30", "13:30"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7]),
+            new Restaurant(5, "Burgermeister", "Hamburguesa", "Berlín", ["13:00", "15:30", "18:00"], "../img/hamburguesa4.jpg", [5, 8, 4, 9, 9]),
+            new Restaurant(6, "Jolly", "Pasta", "Berlín", ["12:00", "13:30", "16:00"], "../img/asiatica3.jpg", [8, 3, 9, 5, 6, 7]),
+            new Restaurant(7, "Osteria Da Fortunata", "Pasta", "Roma", ["13:00", "15:30", "18:00"], "../img/pasta2.jpg", [7, 7, 7, 7, 3, 9]),
+            new Restaurant(8, "Osteria", "Ensalada", "Roma", ["13:30", "16:30", "19:00"], "../img/pasta2.jpg", [7, 7, 7, 7, 3, 9]),
+            new Restaurant(9, "Cafe Francoeur", "Desayuno", "París", ["14:30", "15:30", "19:00"], "../img/desayuno1.jpg", [4, 7, 9, 8, 10]),
+            new Restaurant(10, "La Trottinette", "Desayuno", "París", ["13:00", "15:30", "18:00"], "../img/pasta5.jpg", [8, 8, 7, 7, 7, 7])    
+        ];
+        var listado = new Listado(listadoDeRestaurantes);
+        
+        var filtrados = listado.obtenerRestaurantes(null, null, '18:00');
+        console.log(filtrados)
+        
+        expect(filtrados.length).to.equal(5);
     })
 })

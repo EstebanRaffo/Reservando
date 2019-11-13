@@ -31,17 +31,40 @@ Restaurant.prototype.calificar = function(nuevaCalificacion) {
     }
 }
 
-Restaurant.prototype.obtenerPuntuacion = function() {
-    if (this.calificaciones.length === 0) {
-        return 0;
-    } else {
-        var sumatoria = 0;
-        for (var i = 0; i < this.calificaciones.length; i++) {
-            sumatoria += this.calificaciones[i]
-        }
-        var promedio = sumatoria / this.calificaciones.length;
-        return Math.round(promedio * 10) / 10;
-    }
+// Restaurant.prototype.obtenerPuntuacion = function() {
+//     if (this.calificaciones.length === 0) {
+//         return 0;
+//     } else {
+//         var sumatoria = 0;
+//         for (var i = 0; i < this.calificaciones.length; i++) {
+//             sumatoria += this.calificaciones[i]
+//         }
+//         var promedio = sumatoria / this.calificaciones.length;
+//         return Math.round(promedio * 10) / 10;
+//     }
 
+// }
+
+Restaurant.prototype.obtenerPuntuacion = function(){
+    if(this.calificaciones.length === 0){
+        return 0;
+    }
+    else{
+        var promedio = this.calcularPromedio();
+        return promedio;
+    }
 }
 
+Restaurant.prototype.calcularPromedio = function(){
+    var sumatoria = this.calcularSumatoria();
+    var promedio = sumatoria / this.calificaciones.length;
+    return Math.round(promedio * 10) / 10;
+}
+
+Restaurant.prototype.calcularSumatoria = function(){
+    var sumatoria = 0;
+    for (var i = 0; i < this.calificaciones.length; i++) {
+       sumatoria += this.calificaciones[i]
+    }
+    return sumatoria;
+}

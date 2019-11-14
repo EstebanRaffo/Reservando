@@ -1,6 +1,7 @@
 var expect = chai.expect;
 
 // Guia 1
+
 // Paso 2: Testeá la función reservarHorario(horario)
 describe('Test de reserva de horarios', function(){
     it('Cuando se reserva un horario, el mismo es eliminado del arreglo de horarios', function(){
@@ -215,5 +216,25 @@ describe('Test de obtener restaurantes', function(){
         console.log(filtrados)
         
         expect(filtrados.length).to.equal(5);
+    })
+})
+
+
+// Guía 3
+
+// Paso 1 - Red: Convertí los requerimientos en pruebas unitaria
+
+describe('Test de Cálculo de Precios de Reserva', function(){
+    it('Test de cálculo del precio base', function(){
+        var reserva1 = new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1");
+
+        var precioBase = reserva1.calcularPrecioBase();
+        expect(precioBase).to.equal(2800);
+    })
+    it('Test de cálculo del precio final', function(){
+        var reserva2 = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200");
+        
+        var precioFinal = reserva2.calcularPrecioFinal();
+        expect(precioFinal).to.equal(100);
     })
 })

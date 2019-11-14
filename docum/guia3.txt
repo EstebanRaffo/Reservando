@@ -69,6 +69,7 @@ Precio final: 100
 
 Prestá atención a la creación del objeto Date. Revisá primero, que representan los parámetros que recibe. Por ejemplo, para representar los meses, se utilizan 
 valores del 0 al 11, dónde 0 es enero y 11 es diciembre.Te dejamos documentación para que leas sobre este objeto.
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date
 
 Una vez que termines de crear todos los tests, ejecutalos abriendo el archivo test.html y fijate que todos fallen. En el siguiente paso, vas a escribir el código
 necesario para que comiencen a funcionar.
@@ -85,6 +86,8 @@ Crear la función que calcule el precio final de la reserva. Esta función segur
 adicionales. No te preocupes por eso, en el siguiente paso vas a encargarte de mejorar tu código.
 
 A medida que vayas desarrollando las funcionalidades, podes ejecutar el archivo test.html para probar que los test comiencen a dar el resultado esperado.
+
+
 
 Paso 3 - Refactor: Mejorá las funcionalidades de la reserva
 

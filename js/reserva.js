@@ -31,38 +31,66 @@ class Reserva{
     }
 
     calcularPrecioFinal = function(){
-        return this.calcularPrecioBase() + this.calcularAdicional() - this.calcularDescuento();
+        var precioFinal;
+        console.log('Precio Base: ' + this.calcularPrecioBase())
+        console.log('Descuento Total: ' + this.calcularDescuento())
+        precioFinal = this.calcularPrecioBase() + this.calcularAdicional() - this.calcularDescuento();
+        console.log('Precio Final: ' + precioFinal)
+        return precioFinal;
     }
 
     calcularDescuento = function(){
+        console.log('Descuento por código: ' + this.descuentoPorCodigo())
         return this.descuentoPorCantidad() + this.descuentoPorCodigo();
     }
 
     descuentoPorCantidad = function(){
+        var descuentoPorCantidad = 0;
+        
         if(this.cantidadDePersonas >= 4 && this.cantidadDePersonas <= 6){
-            return this.calcularPrecioBase() * 5 / 100;
+            descuentoPorCantidad = this.calcularPrecioBase() * 5 / 100;
         }
-        if(this.cantidadDePersonas == 7 && this.cantidadDePersonas == 8){
-            return this.calcularPrecioBase() * 10 / 100;
+        if(this.cantidadDePersonas == 7 || this.cantidadDePersonas == 8){
+            descuentoPorCantidad = this.calcularPrecioBase() * 10 / 100;
         }
         if(this.cantidadDePersonas > 8){
-            return this.calcularPrecioBase() * 15 / 100;
+            descuentoPorCantidad = this.calcularPrecioBase() * 15 / 100;
         }
+        console.log('Descuento por cantidad: ' + descuentoPorCantidad)
+        return descuentoPorCantidad;
     }
 
     descuentoPorCodigo = function(){
+        var descuentoPorCodigo = 0;
+
         if(this.codigoDescuento == 'DES15'){
-            return this.calcularPrecioBase() * 15 / 100;
+            descuentoPorCodigo = this.calcularPrecioBase() * 15 / 100;
         }
         if(this.codigoDescuento == 'DES200'){
-            return 200;
+            descuentoPorCodigo = 200;
         }
         if(this.codigoDescuento == 'DES1'){
-            return this.precioPorPersona;
+            descuentoPorCodigo = this.precioPorPersona;
         }
+
+        return descuentoPorCodigo;
     }
 
     calcularAdicional = function(){
-        
+        var adicional = 0;
+        console.log('Fecha ingresada: ' + this.fecha)
+        console.log('Nro de Día: ' + this.fecha.getDay())
+        // Adicional por horario
+        if(this.fecha.getDay() >= 1 && this.fecha.getDay() <= 4){
+            if(this.fecha.getHours() == 13 || this.fecha.getHours() == 14 || this.fecha.getHours() == 20 || this.fecha.getHours() == 21){
+                adicional = this.calcularPrecioBase() * 5 / 100;
+            }
+        }
+        // Adicional por fin de semana
+        else{
+            adicional = this.calcularPrecioBase() * 10 / 100;
+        }
+        console.log('Adicional: ' + adicional)
+        return adicional;
     }
 }

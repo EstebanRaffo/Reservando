@@ -108,7 +108,6 @@ describe('Test de obtener restaurantes', function(){
         var listado = new Listado(listadoDeRestaurantes);
         
         var filtrados = listado.obtenerRestaurantes(null, "Londres", "15:30");
-        console.log(filtrados)
         
         expect(filtrados.length).to.equal(2);
     })
@@ -129,7 +128,6 @@ describe('Test de obtener restaurantes', function(){
         var listado = new Listado(listadoDeRestaurantes);
         
         var filtrados = listado.obtenerRestaurantes("Asiática", null, null);
-        console.log(filtrados)
         
         expect(filtrados.length).to.equal(2);
     })
@@ -150,7 +148,6 @@ describe('Test de obtener restaurantes', function(){
         var listado = new Listado(listadoDeRestaurantes);
         
         var filtrados = listado.obtenerRestaurantes("Pizza", null, "15:30");
-        console.log(filtrados)
         
         expect(filtrados.length).to.equal(1);
     })
@@ -171,7 +168,6 @@ describe('Test de obtener restaurantes', function(){
         var listado = new Listado(listadoDeRestaurantes);
         
         var filtrados = listado.obtenerRestaurantes(null, 'Berlín', null);
-        console.log(filtrados)
         
         expect(filtrados.length).to.equal(2);
     })
@@ -192,8 +188,7 @@ describe('Test de obtener restaurantes', function(){
         var listado = new Listado(listadoDeRestaurantes);
         
         var filtrados = listado.obtenerRestaurantes('Pasta', 'Berlín', null);
-        console.log(filtrados)
-        
+
         expect(filtrados.length).to.equal(1);
     })
 
@@ -213,7 +208,6 @@ describe('Test de obtener restaurantes', function(){
         var listado = new Listado(listadoDeRestaurantes);
         
         var filtrados = listado.obtenerRestaurantes(null, null, '18:00');
-        console.log(filtrados)
         
         expect(filtrados.length).to.equal(5);
     })
@@ -225,16 +219,30 @@ describe('Test de obtener restaurantes', function(){
 // Paso 1 - Red: Convertí los requerimientos en pruebas unitaria
 
 describe('Test de Cálculo de Precios de Reserva', function(){
-    it('Test de cálculo del precio base', function(){
+    it('Test de cálculo del Precio Base Reserva 1', function(){
         var reserva1 = new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1");
 
         var precioBase = reserva1.calcularPrecioBase();
         expect(precioBase).to.equal(2800);
     })
-    it('Test de cálculo del precio final', function(){
-        var reserva2 = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200");
-        
-        var precioFinal = reserva2.calcularPrecioFinal();
-        expect(precioFinal).to.equal(100);
+    it('Test de cálculo del Precio Final Reserva 1', function(){
+        var reserva1 = new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1");
+
+        var precioFinal = reserva1.calcularPrecioFinal();
+
+        expect(precioFinal).to.equal(2310);
     })
+    // it('Test de cálculo del Precio Base Reserva 2', function(){
+    //     var reserva = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200");
+
+    //     var precioBase = reserva.calcularPrecioBase();
+    //     expect(precioBase).to.equal(300);
+    // })
+    // it('Test de cálculo del Precio Final Reserva 2', function(){
+    //     var reserva = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200");
+
+    //     var precioFinal = reserva.calcularPrecioFinal();
+    //     console.log(precioFinal)
+    //     expect(precioFinal).to.equal(100);
+    // })
 })

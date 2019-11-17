@@ -7,15 +7,14 @@ var Aplicacion = function(listado) {
 
 //Esta función le asigna al botón "Buscar" la función filtrarRestaurantes()
 Aplicacion.prototype.registrarEventos = function() {
-$(".buscar").click(this.filtrarRestaurantes.bind(this));
+    $(".buscar").click(this.filtrarRestaurantes.bind(this));
 }
 
 //Esta función llama a las funciones que se encargan de cargar las opciones de los filtros
 Aplicacion.prototype.dibujarFiltros = function() {
-this.dibujarHorarios();
-this.dibujarRubros();
-this.dibujarCiudades();
-
+    this.dibujarHorarios();
+    this.dibujarRubros();
+    this.dibujarCiudades();
 }
 
 //Función que se encarga de dibujar todos los restaurantes que recibe por parámetro. Cuando hablamos de dibujar, nos referimos a crear

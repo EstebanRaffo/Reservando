@@ -3,7 +3,7 @@ var expect = chai.expect;
 // Guia 1
 
 // Paso 2: Testeá la función reservarHorario(horario)
-describe('Test de reserva de horarios', function(){
+describe('Test de Reserva de Horarios', function(){
     it('Cuando se reserva un horario, el mismo es eliminado del arreglo de horarios', function(){
         var resto = new Restaurant(25, "Maison", "Desayuno", "Nueva York", ["21:00", "22:30", "15:00"], "../img/desayuno2.jpg", [9, 5, 7, 6, 7]);
         resto.reservarHorario('21:00');
@@ -27,48 +27,48 @@ describe('Test de reserva de horarios', function(){
 })
 
 // Paso 3: Testeá la función obtenerPuntuación()
-describe('Test de obtener puntuación', function(){
+describe('Test de Obtener Puntuación', function(){
     it('Calculo del promedio de las calificaciones', function(){
         var resto = new Restaurant(28, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [5, 6, 7, 8, 9]);
         expect(resto.obtenerPuntuacion()).to.equal(7);
     })
 
-    it('Calculo del promedio de un resto sin calificaciones', function(){
+    it('Calculo del promedio de un restaurant sin calificaciones', function(){
         var resto = new Restaurant(29, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", []);
         expect(resto.obtenerPuntuacion()).to.equal(0);
     })
 })
 
 // Paso 4: Testeá la función calificar()
-describe('Test de Calificar', function(){
+describe('Test de Calificar Restaurant', function(){
     it('Validar que la calificación sea un valor entero', function(){
         var resto = new Restaurant(30, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [5, 6, 7, 8, 9]);
-        var calificaciones = resto.calificaciones.length;
+        var calificacionesAntesDeLaNueva = resto.calificaciones.length;
         resto.calificar(5.1);
         var calificacionesConLaNueva = resto.calificaciones.length;
-        expect(calificaciones).to.equal(calificacionesConLaNueva);
+        expect(calificacionesAntesDeLaNueva).to.equal(calificacionesConLaNueva);
     })
 
     it('Validar que la calificación sea un valor mayor que 0', function(){
         var resto = new Restaurant(30, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [5, 6, 7, 8, 9]);
-        var calificaciones = resto.calificaciones.length;
+        var calificacionesAntesDeLaNueva = resto.calificaciones.length;
         resto.calificar(-1);
         var calificacionesConLaNueva = resto.calificaciones.length;
-        expect(calificaciones).to.equal(calificacionesConLaNueva);
+        expect(calificacionesAntesDeLaNueva).to.equal(calificacionesConLaNueva);
     })
 
     it('Validar que la calificación sea un valor menor que 10', function(){
         var resto = new Restaurant(30, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [5, 6, 7, 8, 9]);
-        var calificaciones = resto.calificaciones.length;
+        var calificacionesAntesDeLaNueva = resto.calificaciones.length;
         resto.calificar(10);
         var calificacionesConLaNueva = resto.calificaciones.length;
-        expect(calificaciones).to.equal(calificacionesConLaNueva);
+        expect(calificacionesAntesDeLaNueva).to.equal(calificacionesConLaNueva);
     })
 })
 
 // Paso 5: Testeá la función buscarRestaurante(id)
-describe('Test de buscar Restaurante', function(){
-    it('El id pertenece a un resto existente', function(){
+describe('Test de Buscar Restaurante', function(){
+    it('El id buscado pertenece a un resto existente', function(){
         var listadoDeRestaurantes = [
             new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
             new Restaurant(2, "Mandarín Kitchen", "Asiática", "Londres", ["15:00", "14:30", "12:30"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7]),
@@ -79,7 +79,7 @@ describe('Test de buscar Restaurante', function(){
         expect(3).to.equal(resto.id);
     })
 
-    it('El id no pertenece a un resto existente', function(){
+    it('El id buscado no pertenece a ningún resto existente', function(){
         var listadoDeRestaurantes = [
             new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
             new Restaurant(2, "Mandarín Kitchen", "Asiática", "Londres", ["15:00", "14:30", "12:30"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7])
@@ -91,7 +91,7 @@ describe('Test de buscar Restaurante', function(){
 })
 
 // Paso 6: Testeá la función obtenerRestaurantes()
-describe('Test de obtener restaurantes', function(){
+describe('Test de Obtener Restaurantes', function(){
     it('Solo Filtro Rubro no informado', function(){
         var listadoDeRestaurantes = [
             new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
@@ -106,7 +106,6 @@ describe('Test de obtener restaurantes', function(){
             new Restaurant(10, "La Trottinette", "Desayuno", "París", ["13:00", "15:30", "18:00"], "../img/pasta5.jpg", [8, 8, 7, 7, 7, 7])    
         ];
         var listado = new Listado(listadoDeRestaurantes);
-        
         var filtrados = listado.obtenerRestaurantes(null, "Londres", "15:30");
         
         expect(filtrados.length).to.equal(2);
@@ -126,7 +125,6 @@ describe('Test de obtener restaurantes', function(){
             new Restaurant(10, "La Trottinette", "Desayuno", "París", ["13:00", "15:30", "18:00"], "../img/pasta5.jpg", [8, 8, 7, 7, 7, 7])    
         ];
         var listado = new Listado(listadoDeRestaurantes);
-        
         var filtrados = listado.obtenerRestaurantes("Asiática", null, null);
         
         expect(filtrados.length).to.equal(2);
@@ -146,7 +144,6 @@ describe('Test de obtener restaurantes', function(){
             new Restaurant(10, "La Trottinette", "Desayuno", "París", ["13:00", "15:30", "18:00"], "../img/pasta5.jpg", [8, 8, 7, 7, 7, 7])    
         ];
         var listado = new Listado(listadoDeRestaurantes);
-        
         var filtrados = listado.obtenerRestaurantes("Pizza", null, "15:30");
         
         expect(filtrados.length).to.equal(1);
@@ -166,7 +163,6 @@ describe('Test de obtener restaurantes', function(){
             new Restaurant(10, "La Trottinette", "Desayuno", "París", ["13:00", "15:30", "18:00"], "../img/pasta5.jpg", [8, 8, 7, 7, 7, 7])    
         ];
         var listado = new Listado(listadoDeRestaurantes);
-        
         var filtrados = listado.obtenerRestaurantes(null, 'Berlín', null);
         
         expect(filtrados.length).to.equal(2);
@@ -186,7 +182,6 @@ describe('Test de obtener restaurantes', function(){
             new Restaurant(10, "La Trottinette", "Desayuno", "París", ["13:00", "15:30", "18:00"], "../img/pasta5.jpg", [8, 8, 7, 7, 7, 7])    
         ];
         var listado = new Listado(listadoDeRestaurantes);
-        
         var filtrados = listado.obtenerRestaurantes('Pasta', 'Berlín', null);
 
         expect(filtrados.length).to.equal(1);
@@ -206,7 +201,6 @@ describe('Test de obtener restaurantes', function(){
             new Restaurant(10, "La Trottinette", "Desayuno", "París", ["13:00", "15:30", "18:00"], "../img/pasta5.jpg", [8, 8, 7, 7, 7, 7])    
         ];
         var listado = new Listado(listadoDeRestaurantes);
-        
         var filtrados = listado.obtenerRestaurantes(null, null, '18:00');
         
         expect(filtrados.length).to.equal(5);
@@ -219,30 +213,28 @@ describe('Test de obtener restaurantes', function(){
 // Paso 1 - Red: Convertí los requerimientos en pruebas unitaria
 
 describe('Test de Cálculo de Precios de Reserva', function(){
-    it('Test de cálculo del Precio Base Reserva 1', function(){
+    it('Test de cálculo del Precio Base de Reserva 1', function(){
         var reserva1 = new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1");
-
         var precioBase = reserva1.calcularPrecioBase();
+
         expect(precioBase).to.equal(2800);
     })
-    it('Test de cálculo del Precio Final Reserva 1', function(){
+    it('Test de cálculo del Precio Final de Reserva 1', function(){
         var reserva1 = new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1");
-
         var precioFinal = reserva1.calcularPrecioFinal();
 
-        expect(precioFinal).to.equal(2310);
+        expect(precioFinal).to.equal(2450); // El resultado de 2310 indicado en la guía es incorrecto. El precio final de la reserva 1 es 2450.
     })
-    // it('Test de cálculo del Precio Base Reserva 2', function(){
-    //     var reserva = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200");
+    it('Test de cálculo del Precio Base de Reserva 2', function(){
+        var reserva2 = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200");
+        var precioBase = reserva2.calcularPrecioBase();
 
-    //     var precioBase = reserva.calcularPrecioBase();
-    //     expect(precioBase).to.equal(300);
-    // })
-    // it('Test de cálculo del Precio Final Reserva 2', function(){
-    //     var reserva = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200");
-
-    //     var precioFinal = reserva.calcularPrecioFinal();
-    //     console.log(precioFinal)
-    //     expect(precioFinal).to.equal(100);
-    // })
+        expect(precioBase).to.equal(300);
+    })
+    it('Test de cálculo del Precio Final de Reserva 2', function(){
+        var reserva2 = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200");
+        var precioFinal = reserva2.calcularPrecioFinal();
+       
+        expect(precioFinal).to.equal(100);
+    })
 })

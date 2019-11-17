@@ -91,6 +91,7 @@ Listado.prototype.obtenerHorarios = function() {
 //Solo se filtra si el valor recibido es distinto de null.
 Listado.prototype.obtenerRestaurantes = function(filtroRubro, filtroCiudad, filtroHorario) {
     var restaurantesFiltrados = this.restaurantes;
+
     if (filtroRubro !== null) {
         restaurantesFiltrados = restaurantesFiltrados.filter(restaurant => restaurant.rubro == filtroRubro);
     }
@@ -104,6 +105,7 @@ Listado.prototype.obtenerRestaurantes = function(filtroRubro, filtroCiudad, filt
             return res.horarios.some(horario => horario == filtroHorario);
         });
     }
+    
     return restaurantesFiltrados;
 }
 
